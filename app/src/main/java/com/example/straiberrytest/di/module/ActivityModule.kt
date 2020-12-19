@@ -1,6 +1,7 @@
 package com.example.straiberrytest.di.module
 
 import com.example.straiberrytest.MainActivity
+import com.example.straiberrytest.di.provider.PhotosFragmentProvider
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -10,9 +11,7 @@ interface ActivityModule {
 
     @ContributesAndroidInjector(
         modules = [
-//            RegisterStepOneProvider::class,
-//            RegisterStepTwoProvider::class,
-//            RegisterStepThreeProvider::class
+            PhotosFragmentProvider::class
         ]
     )
     fun registerActivityInjector(): MainActivity
