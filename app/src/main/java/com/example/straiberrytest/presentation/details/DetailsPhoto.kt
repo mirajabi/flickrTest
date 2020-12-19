@@ -64,13 +64,13 @@ class DetailsPhoto : DaggerFragment() {
         viewModelphoto.isLoad.observe(requireActivity(), Observer {
             it?.let { isShowing ->
                 if (isShowing) {
-                    view.bottom_sheet.gone()
-                    view.iv_thumbnail_large.gone()
-                    view.progressCollection.show()
-                } else {
                     view.bottom_sheet.show()
                     view.iv_thumbnail_large.show()
                     view.progressCollection.gone()
+                } else {
+                    view.bottom_sheet.gone()
+                    view.iv_thumbnail_large.gone()
+                    view.progressCollection.show()
                 }
             }
         })
