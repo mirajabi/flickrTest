@@ -38,6 +38,7 @@ class DetailsPhoto : DaggerFragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
         }
+        viewModelphoto.isLoad.value = false
     }
 
     override fun onCreateView(
