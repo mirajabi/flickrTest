@@ -45,3 +45,11 @@ fun View.show() {
 fun View.gone() {
     visibility = View.GONE
 }
+
+fun calculateNoOfColumns(context: Context): Int {
+    val displayMetrics = context.resources.displayMetrics
+    val dpWidth = displayMetrics.widthPixels / displayMetrics.density
+    val scalingFactor = 200
+    val columnCount = (dpWidth / scalingFactor).toInt()
+    return if (columnCount >= 2) columnCount else 2
+}

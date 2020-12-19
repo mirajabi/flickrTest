@@ -11,11 +11,6 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class ViewModelsBuilder {
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(RegistersOneViewModel::class)
-//    abstract fun bindRegisterStepOneViewModel(registerOneViewModel: RegistersOneViewModel): ViewModel
-
     @Binds
     @IntoMap
     @ViewModelKey(StrAiBerryViewModel::class)
