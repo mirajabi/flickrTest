@@ -2,13 +2,18 @@ package com.example.straiberrytest.util
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.RequestOptions.placeholderOf
+import com.example.straiberrytest.MainActivity
 import com.example.straiberrytest.R
 
 fun getImage(imageName: String, context: Context): Int {
@@ -57,3 +62,25 @@ fun calculateNoOfColumns(context: Context): Int {
     val columnCount = (dpWidth / scalingFactor).toInt()
     return if (columnCount >= 2) columnCount else 2
 }
+
+fun FragmentActivity.switchTo(
+    activity: Activity,
+    activityTwo: AppCompatActivity,
+    transaction: Any? = null,
+    key: String? = "data"
+) {
+    val intent = Intent(activity, activityTwo::class.java)
+    intent.putExtra(key, transaction?.toString())
+    startActivity(intent)
+    activity.overridePendingTransition(0, 0)
+}
+
+fun switch(view: View, fragment: Fragment, transaction: Any? = null) {
+    val args = Bundle()
+    args.putString("transaction", transaction.toString())
+    fragment.arguments = args
+    (view.context as MainActivity).supportFragmentManager.beginTransaction()
+        .replace(R.id.gallery_container, fragment).addToBackStack("tag")
+        .commit()
+}
+

@@ -9,4 +9,13 @@
     <string name="tap_to_reload">تلاش دوباره</string>
     <string name="menu_refresh">بازآوری</string>
     <string name="todo">todo</string>
+
+    <string name="action_open_source">Open source info</string>
+    <string name="msg_detail_error">Photo id not found</string>
+    <string name="msg_owner_name">By: %s</string>
+    <string name="msg_post">On: %s</string>
+    <string name="time_format_detail">MMM dd, YYYY</string>
+    <string name="label_retry">Retry</string>
+    <string name="msg_no_result">Flickr error</string>
+    <string name="msg_network_error">There was a problem with the network connection.</string>
 </resources>

@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.straiberrytest.R
 import com.example.straiberrytest.domain.model.DefaultPhoto
+import com.example.straiberrytest.presentation.PhotosFragment
+import com.example.straiberrytest.presentation.details.DetailsPhoto
 import com.example.straiberrytest.util.loadImageFull
+import com.example.straiberrytest.util.switch
 
 
 class AdapterPhotoFlickr :
@@ -54,7 +58,8 @@ class AdapterPhotoFlickr :
                 R.id.background_item -> {
                     val model = getItem(layoutPosition)
                     val id = model?.photoId
-                    println("PRINTIDPHOTO : $id")
+
+                    switch(view , DetailsPhoto() ,id)
                 }
             }
         }
