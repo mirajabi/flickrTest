@@ -6,6 +6,7 @@ A simple Android application to show the MVVM design pattern usage with followin
 ## Features used
 
 * 100% Kotlin.
+* androidX
 * Following Clean Architecture approach.
 * Following MVVM Architectural Design Pattern.
 * Using Pagination.
@@ -13,4 +14,5 @@ A simple Android application to show the MVVM design pattern usage with followin
 * okhttp
 * dagger2 
 * rxjava
+* Gson
 
