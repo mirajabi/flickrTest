@@ -3,7 +3,7 @@
 A simple Android application to show the MVVM design pattern usage with following Clean Architecture approach.
 
 
-# Features used
+## Features used
 ```Kotlin
 100% Kotlin-only.
 Following Clean Architecture approach.
