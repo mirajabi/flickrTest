@@ -1,4 +1,5 @@
-# Android MVVM + Clean Architecture [![Build Status](https://travis-ci.org/{miaaad}/{https://github.com/miaaad/flickrTest}.png?branch=master)](https://travis-ci.org/{miaaad}/{https://github.com/miaaad/flickrTest})
+# Android MVVM + Clean Architecture 
+
 
 
 A simple Android application to show the MVVM design pattern usage with following Clean Architecture approach.
