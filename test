@@ -1,0 +1,53 @@
+@Override
+public void onStart() {
+    super.onStart();
+
+    BottomSheetDialog dialog = (BottomSheetDialog) getDialog();
+    if (dialog == null) return;
+
+    FrameLayout sheet = dialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+    if (sheet == null) return;
+
+    sheet.setBackground(null); // avoid OEM frame/shadow
+    final BottomSheetBehavior<FrameLayout> behavior = BottomSheetBehavior.from(sheet);
+
+    // Compute peek AFTER the sheet is laid out (real container height, not screen)
+    sheet.post(() -> {
+        int parentH = sheet.getHeight();               // height of bottom sheet container
+        float ratio  = 0.62f;                          // try 0.60–0.70 for “center-ish”
+        int peek     = (int) (parentH * ratio);
+
+        // clamp so it never looks too low/high
+        int minPeek  = (int) (parentH * 0.45f);
+        int maxPeek  = (int) (parentH * 0.85f);
+        peek = Math.max(minPeek, Math.min(peek, maxPeek));
+
+        behavior.setSkipCollapsed(false);
+        try {                                          // 1.3.0 has this overload
+            behavior.setPeekHeight(peek, true);
+        } catch (NoSuchMethodError ignore) {
+            behavior.setPeekHeight(peek);              // 1.2.x fallback
+        }
+        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    });
+
+    // Cap your content so it never overflows on 2.6" screens
+    View root = sheet.findViewById(R.id.bottomContainer); // your inner container id
+    if (root != null) {
+        sheet.post(() -> {
+            int parentH = sheet.getHeight();
+            int maxH    = (int) (parentH * 0.85f);
+            ViewGroup.LayoutParams lp = root.getLayoutParams();
+            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            root.setMinimumHeight(0);
+            root.setLayoutParams(lp);
+
+            root.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+                if (root.getHeight() > maxH) {
+                    lp.height = maxH;
+                    root.setLayoutParams(lp);
+                }
+            });
+        });
+    }
+}
